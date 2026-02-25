@@ -3,8 +3,10 @@
 #include <iostream>
 #include "lexer.h"
 #include "symbole.h"
+#include "symboleNT.h"
 #include "etats/etat.h"
 #include <stack>
+#include <vector>
 
 using namespace std;
 
@@ -55,9 +57,38 @@ class Automate {
             return;
         }
 
+        std::vector<Symbole*> symbolesDepiles;
+        symbolesDepiles.reserve(tailleReduction);
+
         for (int i = 0; i < tailleReduction; ++i) {
+            symbolesDepiles.push_back(pileSymbole.top());
             pileSymbole.pop();
             pileEtats.pop();
+        }
+
+        SymboleNT *resultatNT = dynamic_cast<SymboleNT*>(s);
+        if (resultatNT != nullptr) {
+            int valeurCalculee = 0;
+            switch (regle) {
+                case 1: // E' -> E
+                    valeurCalculee = symbolesDepiles[0]->eval();
+                    break;
+                case 2: // E -> E + E
+                    valeurCalculee = symbolesDepiles[2]->eval() + symbolesDepiles[0]->eval();
+                    break;
+                case 3: // E -> E * E
+                    valeurCalculee = symbolesDepiles[2]->eval() * symbolesDepiles[0]->eval();
+                    break;
+                case 4: // E -> ( E )
+                    valeurCalculee = symbolesDepiles[1]->eval();
+                    break;
+                case 5: // E -> val
+                    valeurCalculee = symbolesDepiles[0]->eval();
+                    break;
+                default:
+                    break;
+            }
+            resultatNT->setValeur(valeurCalculee);
         }
 
         if (pileEtats.empty()) {
@@ -78,7 +109,11 @@ class Automate {
     void Accepter() {
         // L'automate accepte l'entrée
         accepted = true;
-        std::cout << "Accepté!" << std::endl;
+        if (!pileSymbole.empty()) {
+            std::cout << "Accepte ! Resultat = " << pileSymbole.top()->eval() << std::endl;
+        } else {
+            std::cout << "Accepte !" << std::endl;
+        }
     }
     
     
