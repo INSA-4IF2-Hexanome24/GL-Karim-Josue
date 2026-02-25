@@ -1,6 +1,4 @@
 #include "etat0.h"
-#include "pile.h"
-#include "symboleNT.h"
 #include <iostream>
 
 

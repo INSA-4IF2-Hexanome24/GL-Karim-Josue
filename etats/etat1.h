@@ -3,10 +3,10 @@
 #include "etat.h"
 class Automate; 
 
-class Etat0 : public Etat {
+class Etat1 : public Etat {
 public:
-    Etat0() : Etat(0) {}
-    virtual ~Etat0() {}
+    Etat1() : Etat(1) {}
+    virtual ~Etat1() {}
     
     virtual void Affiche() override;
     virtual void Transition(Symbole *s, Automate *a) override;

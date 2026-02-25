@@ -1,13 +1,13 @@
 #pragma once
 
 #include "etat.h"
-class Automate; 
+class Automate;
 
-class Etat0 : public Etat {
+class Etat3 : public Etat {
 public:
-    Etat0() : Etat(0) {}
-    virtual ~Etat0() {}
-    
+    Etat3() : Etat(3) {}
+    virtual ~Etat3() {}
+
     virtual void Affiche() override;
     virtual void Transition(Symbole *s, Automate *a) override;
 };
