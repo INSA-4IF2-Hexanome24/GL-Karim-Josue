@@ -3,7 +3,7 @@
 #include "automate.h"
 
 int main() {
-    std::string chaine("(1+34)*123");
+    std::string chaine("1+3");
     Lexer lexer(chaine);
     Automate a(&lexer);
     a.Analyse();

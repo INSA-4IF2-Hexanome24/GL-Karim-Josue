@@ -39,6 +39,7 @@ class Automate {
 
     void Accepter() {
         // L'automate accepte l'entrée
+        accepted = true;
         std::cout << "Accepté!" << std::endl;
     }
     
