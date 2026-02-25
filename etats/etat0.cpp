@@ -3,21 +3,26 @@
 #include "symboleNT.h"
 #include <iostream>
 
-// Implementa las transiciones del estado 0
+
 void Etat0::Transition(Symbole *s, Pile *p) {
    if (s == nullptr || p == nullptr) return;
    
    switch (s->ident) {
       case E:
-         // Transición: E -> empilar Etat(1)
-         p->Empile(new Etat0()); // Nota: reemplaza con new Etat1() cuando crees esa clase
+        
+      
+         p->Empile(new Etat0()); 
+         
          break;
       case EPRIM:
-         // Transición: EPRIM -> empilar Etat(2)
-         p->Empile(new Etat0()); // Nota: reemplaza con new Etat2() cuando crees esa clase
+       
+      
+         p->Empile(new Etat0()); 
+         
          break;
       default:
-         // No hay transición definida para este símbolo
+        
+      
          break;
    }
 }
