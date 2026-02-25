@@ -26,14 +26,52 @@ class Automate {
         pileEtats.push(e);
     }
 
-    void Reduire(int n, Symbole *s) {
-        // Dépiler les n derniers symboles et états
-        for (int i = 0; i < n; ++i) {
+    void Reduire(int regle, Symbole *s) {
+        int tailleReduction = 0;
+
+        switch (regle) {
+            case 1: // E' -> E
+                tailleReduction = 1;
+                break;
+            case 2: // E -> E + E
+                tailleReduction = 3;
+                break;
+            case 3: // E -> E * E
+                tailleReduction = 3;
+                break;
+            case 4: // E -> ( E )
+                tailleReduction = 3;
+                break;
+            case 5: // E -> val
+                tailleReduction = 1;
+                break;
+            default:
+                std::cerr << "Erreur: regle inconnue " << regle << std::endl;
+                return;
+        }
+
+        if ((int)pileSymbole.size() < tailleReduction || (int)pileEtats.size() < tailleReduction) {
+            std::cerr << "Erreur: pile insuffisante pour reduction r" << regle << std::endl;
+            return;
+        }
+
+        for (int i = 0; i < tailleReduction; ++i) {
             pileSymbole.pop();
             pileEtats.pop();
         }
-        // Empiler le symbole résultant de la réduction
-        pileSymbole.push(s);
+
+        if (pileEtats.empty()) {
+            std::cerr << "Erreur: pile d'etats vide apres reduction r" << regle << std::endl;
+            return;
+        }
+
+        Etat *etatCourant = pileEtats.top();
+        if (!etatCourant) {
+            std::cerr << "Erreur: etat courant null apres reduction r" << regle << std::endl;
+            return;
+        }
+
+        etatCourant->Transition(s, this);
     }
 
 
