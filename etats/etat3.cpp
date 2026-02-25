@@ -9,10 +9,17 @@ void Etat3::Transition(Symbole *s, Automate *a) {
 
    switch ((int)*s) {
       case PLUS:
+         a->Reduire(5, new SymboleE());
+         break;
+
       case MULT:
+      a->Reduire(5, new SymboleE());
+         break;
       case CLOSEPAR:
+      a->Reduire(5, new SymboleE());
+         break;
       case FIN:
-         a->Reduire(1, new SymboleE());
+         a->Reduire(5, new SymboleE());
          break;
       default:
          break;
