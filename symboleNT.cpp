@@ -1,11 +1,10 @@
-#include "symbole.h"
+#include "symboleNT.h"
 #include <iostream>
 
-void Symbole::Affiche() {
-   cout<<Etiquettes[ident];
-}
-
-void Entier::Affiche() {
-   Symbole::Affiche();
-   cout<<"("<<valeur<<")";
+void SymboleNT::Affiche() {
+   if (ident >= 0 && ident < 2) {
+      cout << EtiquettesNT[ident];
+   } else {
+      cout << "SymboleNT(?)";
+   }
 }
