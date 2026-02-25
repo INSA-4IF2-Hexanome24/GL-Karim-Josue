@@ -2,6 +2,7 @@
 
 #include <string>
 #include "symbole.h"
+class Automate;  // Forward declaration
 using namespace std;
 
 class Etat {
@@ -11,7 +12,7 @@ class Etat {
       operator int() const { return ident; }
       virtual void Affiche();
      
-      virtual void Transition(Symbole *s, Pile *p) = 0;
+      virtual void Transition(Symbole *s, Automate *a) = 0;
 
    protected:
       int ident;
