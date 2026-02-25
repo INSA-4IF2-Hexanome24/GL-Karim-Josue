@@ -47,5 +47,10 @@ class Automate {
     Lexer * lexer;
     stack<Symbole *> pileSymbole;
     stack<Etat *> pileEtats;
+ bool accepted = false;
+
+    public:
+    // Lance l'analyse complète jusqu'à Acceptation ou erreur
+    void Analyse();
 
 };
