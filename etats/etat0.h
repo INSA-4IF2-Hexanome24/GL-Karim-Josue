@@ -1,6 +1,7 @@
 #pragma once
 
 #include "etat.h"
+class Automate;  // Forward declaration
 
 class Etat0 : public Etat {
 public:
@@ -8,5 +9,5 @@ public:
     virtual ~Etat0() {}
     
     virtual void Affiche() override;
-    virtual void Transition(Symbole *s, Pile *p) override;
+    virtual void Transition(Symbole *s, Automate *a) override;
 };
