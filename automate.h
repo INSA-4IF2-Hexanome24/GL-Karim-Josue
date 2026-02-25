@@ -20,6 +20,12 @@ class Automate {
         lexer->Avancer(); // Avancer le lexer pour lire le prochain symbole
     }
 
+    void AllerA(Symbole *s, Etat *e) {
+        // Transition sur non-terminal (goto) : ne pas avancer le lexer
+        pileSymbole.push(s);
+        pileEtats.push(e);
+    }
+
     void Reduire(int n, Symbole *s) {
         // Dépiler les n derniers symboles et états
         for (int i = 0; i < n; ++i) {

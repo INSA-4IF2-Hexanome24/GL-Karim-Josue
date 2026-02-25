@@ -1,26 +1,27 @@
 #include "etat0.h"
+#include "etat1.h"
+#include "etat2.h"
+#include "etat3.h"
+#include "symboleNT.h"
+#include "symbole.h"
+#include "automate.h"
 #include <iostream>
 
 
-void Etat0::Transition(Symbole *s, Pile *p) {
+void Etat0::Transition(Symbole *s, Automate *p) {
    if (s == nullptr || p == nullptr) return;
    
-   switch (s->ident) {
-      case E:
-        
-      
-         p->Empile(new Etat0()); 
-         
+   switch ((int)*s) {
+      case INT:
+         p->Decaler(s, new Etat3());
          break;
-      case EPRIM:
-       
-      
-         p->Empile(new Etat0()); 
-         
+      case OPENPAR:
+         p->Decaler(s, new Etat2());
+         break;
+      case E:
+         p->AllerA(s, new Etat1());
          break;
       default:
-        
-      
          break;
    }
 }
