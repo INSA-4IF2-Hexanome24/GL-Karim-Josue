@@ -4,7 +4,7 @@
 #include "symbole.h"
 using namespace std;
 
-enum IdentificateursNT { E, EPRIM };
+enum IdentificateursNT { E = 100, EPRIM = 101};
 
 const string EtiquettesNT[] = { "E", "EPRIM" };
 

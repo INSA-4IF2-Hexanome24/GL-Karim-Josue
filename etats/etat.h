@@ -18,7 +18,6 @@ class Etat {
       int ident;
 };
 
-// Clase para representar transiciones (opcional, puede usarse para logging/debug)
 class Transition : public Symbole {
    public:
       Transition(int v) : Symbole(INT), valeur(v) { }
